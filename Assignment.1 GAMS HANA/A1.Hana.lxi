@@ -1,0 +1,8 @@
+B 3 C o m p i l a t i o n
+B 203 E x e c u t i o n
+I 203 X1
+I 211 X2
+I 220 ab
+I 221 cd
+I 229 RegionCO2_Emission
+I 235 EU_NorthAmerica_Japan_CO2

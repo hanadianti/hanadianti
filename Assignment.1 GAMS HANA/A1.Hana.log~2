@@ -1,0 +1,29 @@
+
+--- Job A1.Hana.gms Start 05/13/22 16:50:22 39.1.0 5f04cd76 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/39/Resources/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /Users/apple/Downloads/Hana.A1GAMS/A1.Hana.gms
+    PageSize 0
+    ScrDir /Users/apple/Downloads/Hana.A1GAMS/225a/
+    SysDir /Library/Frameworks/GAMS.framework/Versions/39/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: GAMS Demo license for Dianti Kamasela          G220509|0002CO-GEN
+          Kyoto University, Indonesia                              DL067067
+          /Users/apple/Library/Application Support/GAMS/gamslice.txt
+          diantifk@gmail.com, Dianti Kamasela                              
+          Demo license for demonstration and instructional purposes only
+Processor information: 1 socket(s), 2 core(s), and 4 thread(s) available
+GAMS 39.1.0   Copyright (C) 1987-2022 GAMS Development. All rights reserved
+--- Starting compilation
+--- A1.Hana.gms(49) 3 Mb 1 Error
+*** Error 282 in /Users/apple/Downloads/Hana.A1GAMS/A1.Hana.gms
+    Unable to open include file
+       Hint: Does the filename need to be quoted?
+--- A1.Hana.gms(192) 3 Mb 1 Error
+*** Status: Compilation error(s)
+--- Job A1.Hana.gms Stop 05/13/22 16:50:22 elapsed 0:00:00.005
