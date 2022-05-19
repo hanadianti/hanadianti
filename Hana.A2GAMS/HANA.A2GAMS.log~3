@@ -1,0 +1,43 @@
+
+--- Job HANA.A2GAMS.gms Start 05/17/22 14:52:31 39.1.0 5f04cd76 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/39/Resources/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /Users/apple/Downloads/HANA.A2GAMS.gms
+    PageSize 0
+    ScrDir /Users/apple/Downloads/225a/
+    SysDir /Library/Frameworks/GAMS.framework/Versions/39/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: GAMS Demo license for Dianti Kamasela          G220509|0002CO-GEN
+          Kyoto University, Indonesia                              DL067067
+          /Users/apple/Library/Application Support/GAMS/gamslice.txt
+          diantifk@gmail.com, Dianti Kamasela                              
+          Demo license for demonstration and instructional purposes only
+Processor information: 1 socket(s), 2 core(s), and 4 thread(s) available
+GAMS 39.1.0   Copyright (C) 1987-2022 GAMS Development. All rights reserved
+--- Starting compilation
+--- HANA.A2GAMS.gms(39) 2 Mb 3 Errors
+*** Error  37 in /Users/apple/Downloads/HANA.A2GAMS.gms
+    '=l=' or '=e=' or '=g=' operator expected
+*** Error 408 in /Users/apple/Downloads/HANA.A2GAMS.gms
+    Too many ),] or }
+*** Error 409 in /Users/apple/Downloads/HANA.A2GAMS.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- HANA.A2GAMS.gms(52) 2 Mb 4 Errors
+*** Error 257 in /Users/apple/Downloads/HANA.A2GAMS.gms
+    Solve statement not checked because of previous errors
+--- HANA.A2GAMS.gms(54) 2 Mb 5 Errors
+*** Error 141 in /Users/apple/Downloads/HANA.A2GAMS.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- HANA.A2GAMS.gms(63) 2 Mb 5 Errors
+*** Status: Compilation error(s)
+--- Job HANA.A2GAMS.gms Stop 05/17/22 14:52:31 elapsed 0:00:00.013

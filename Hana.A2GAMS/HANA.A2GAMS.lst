@@ -1,0 +1,176 @@
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  *DIANTI FARHANA KAMASELA
+   2  *GAMS 2ND ASSIGNMENT
+   3   
+   4  *Q.1 Solve for x and y of the above equation when y is minimized using GAMS solver “NLP (non linear problem)”
+   5   
+   6  Variable
+   7   
+   8  X, Y;
+   9   
+  10  Equation
+  11   
+  12  OBJ;
+  13   
+  14  OBJ..    y =e= 2*x**4-3*x**2-4*x+2;
+  15   
+  16  MODEL
+  17  Q1/OBJ/;
+  18   
+  19  X.L=1;
+  20   
+  21  solve Q1 MINIMIZING Y USING NLP;
+  22   
+  23  display X.L,Y.L;
+  24   
+EXIT /Users/apple/Downloads/Hana.A2GAMS/HANA.A2GAMS.gms
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Include File Summary
+
+
+   SEQ   GLOBAL TYPE      PARENT   LOCAL  FILENAME
+
+     1        1 INPUT          0       0  /Users/apple/Downloads/Hana.A2GAMS/HANA.A2GAMS.gms
+     2       25 EXIT           1      25  /Users/apple/Downloads/Hana.A2GAMS/HANA.A2GAMS.gms
+
+
+COMPILATION TIME     =        0.002 SECONDS      2 MB  39.1.0 5f04cd76 DEX-DEG
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE Q1 Using NLP From line 21
+
+
+---- OBJ  =E=  
+
+OBJ..  (2)*X + Y =E= 2 ; (LHS = 5, INFES = 3 ****)
+     
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE Q1 Using NLP From line 21
+
+
+---- X  
+
+X
+                (.LO, .L, .UP, .M = -INF, 1, +INF, 0)
+       (2)      OBJ
+
+
+---- Y  
+
+Y
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       OBJ
+
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE Q1 Using NLP From line 21
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 2.000E+00, 2.000E+00]
+Bound     [min, max] : [        NA,        NA]
+Matrix    [min, max] : [ 1.000E+00, 2.000E+00]
+
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE Q1 Using NLP From line 21
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           1     SINGLE EQUATIONS            1
+BLOCKS OF VARIABLES           2     SINGLE VARIABLES            2
+NON ZERO ELEMENTS             2     NON LINEAR N-Z              1
+CODE LENGTH                  15     CONSTANT POOL              17
+
+
+GENERATION TIME      =        0.013 SECONDS      3 MB  39.1.0 5f04cd76 DEX-DEG
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE Q1 Using NLP From line 21
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   Q1                  OBJECTIVE  Y
+     TYPE    NLP                 DIRECTION  MINIMIZE
+     SOLVER  CONOPT              FROM LINE  21
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      2 Locally Optimal
+**** OBJECTIVE VALUE               -3.1019
+
+ RESOURCE USAGE, LIMIT          0.032 10000000000.000
+ ITERATION COUNT, LIMIT         7    2147483647
+ EVALUATION ERRORS              0             0
+--- *** This solver runs with a demo license. No commercial use.
+ 
+ 
+    C O N O P T 3   version 3.17M
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 2 variables and 1 constraints
+    with 2 Jacobian elements, 1 of which are nonlinear.
+    The Hessian of the Lagrangian has 1 elements on the diagonal,
+    0 elements below the diagonal, and 1 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147483647 to 1000000000.
+ 
+                   Pre-triangular equations:   0
+                   Post-triangular equations:  1
+ 
+ 
+ ** Optimal solution. Reduced gradient less than tolerance.
+ 
+ 
+ CONOPT time Total                            0.012 seconds
+   of which: Function evaluations             0.000 =  0.0%
+             1st Derivative evaluations       0.000 =  0.0%
+             Directional 2nd Derivative       0.000 =  0.0%
+ 
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU OBJ                2.0000         2.0000         2.0000         1.0000      
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR X                 -INF            1.0979        +INF      4.5941935E-9      
+---- VAR Y                 -INF           -3.1019        +INF             .          
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+                             0     ERRORS
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/17/22 14:56:56 Page 8
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     23 VARIABLE X.L                   =        1.098  
+            VARIABLE Y.L                   =       -3.102  
+
+
+EXECUTION TIME       =        0.093 SECONDS      3 MB  39.1.0 5f04cd76 DEX-DEG
+
+
+USER: GAMS Demo license for Dianti Kamasela          G220509|0002CO-GEN
+      Kyoto University, Indonesia                              DL067067
+
+
+**** FILE SUMMARY
+
+Input      /Users/apple/Downloads/Hana.A2GAMS/HANA.A2GAMS.gms
+Output     /Users/apple/Downloads/Hana.A2GAMS/HANA.A2GAMS.lst

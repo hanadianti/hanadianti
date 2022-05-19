@@ -1,0 +1,16 @@
+B 3 C o m p i l a t i o n
+B 33 Include File Summary
+B 45 Equation Listing    SOLVE Q1 Using NLP From line 21
+D 48 OBJ
+B 54 Column Listing      SOLVE Q1 Using NLP From line 21
+E 57 X
+E 64 Y
+B 72 Range Statistics    SOLVE Q1 Using NLP From line 21
+B 83 Model Statistics    SOLVE Q1 Using NLP From line 21
+B 97 Solution Report     SOLVE Q1 Using NLP From line 21
+F 145 OBJ
+G 149 X
+G 150 Y
+B 159 E x e c u t i o n
+I 161 X
+I 162 Y

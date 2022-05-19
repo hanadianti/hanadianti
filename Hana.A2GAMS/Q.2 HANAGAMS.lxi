@@ -1,0 +1,20 @@
+B 3 C o m p i l a t i o n
+B 39 Equation Listing    SOLVE Q2 Using NLP From line 24
+D 42 EQ1
+D 47 EQ2
+D 52 EQ3
+B 58 Column Listing      SOLVE Q2 Using NLP From line 24
+E 61 A
+E 70 B
+E 79 K
+B 87 Range Statistics    SOLVE Q2 Using NLP From line 24
+B 98 Model Statistics    SOLVE Q2 Using NLP From line 24
+B 112 Solution Report     SOLVE Q2 Using NLP From line 24
+F 159 EQ1
+F 160 EQ2
+F 161 EQ3
+G 165 A
+G 166 B
+G 167 K
+B 176 E x e c u t i o n
+I 178 K

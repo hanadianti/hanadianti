@@ -1,0 +1,41 @@
+
+--- Job Q.2 HANAGAMS.gms Start 05/17/22 14:55:14 39.1.0 5f04cd76 DEX-DEG x86 64bit/Mac OS X
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/39/Resources/gmsprmun.txt
+--- GAMS Parameters defined
+    Input "/Users/apple/Downloads/Q.2 HANAGAMS.gms"
+    PageSize 0
+    ScrDir /Users/apple/Downloads/225a/
+    SysDir /Library/Frameworks/GAMS.framework/Versions/39/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: GAMS Demo license for Dianti Kamasela          G220509|0002CO-GEN
+          Kyoto University, Indonesia                              DL067067
+          /Users/apple/Library/Application Support/GAMS/gamslice.txt
+          diantifk@gmail.com, Dianti Kamasela                              
+          Demo license for demonstration and instructional purposes only
+Processor information: 1 socket(s), 2 core(s), and 4 thread(s) available
+GAMS 39.1.0   Copyright (C) 1987-2022 GAMS Development. All rights reserved
+--- Starting compilation
+--- Q.2 HANAGAMS.gms(16) 2 Mb 1 Error
+*** Error 140 in /Users/apple/Downloads/Q.2 HANAGAMS.gms
+    Unknown symbol
+--- Q.2 HANAGAMS.gms(17) 2 Mb 2 Errors
+*** Error 140 in /Users/apple/Downloads/Q.2 HANAGAMS.gms
+    Unknown symbol
+--- Q.2 HANAGAMS.gms(24) 2 Mb 3 Errors
+*** Error 257 in /Users/apple/Downloads/Q.2 HANAGAMS.gms
+    Solve statement not checked because of previous errors
+--- Q.2 HANAGAMS.gms(26) 2 Mb 4 Errors
+*** Error 141 in /Users/apple/Downloads/Q.2 HANAGAMS.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+--- Q.2 HANAGAMS.gms(28) 2 Mb 4 Errors
+*** Status: Compilation error(s)
+--- Job Q.2 HANAGAMS.gms Stop 05/17/22 14:55:14 elapsed 0:00:00.010

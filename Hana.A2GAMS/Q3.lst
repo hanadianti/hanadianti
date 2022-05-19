@@ -1,0 +1,652 @@
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 1
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+C o m p i l a t i o n
+
+
+   1  *DIANTI FARHANA KAMASELA
+   2  *GAMS 2ND ASSIGNMENT
+   3   
+   4   
+   5  *Q3. Solve Exercise 3.3.1 in the text, “GAMS-for environmental-economic modeling*”. The model is shown
+   6  *on p.33. Answer the question to [Solve the model and display the optimal investment path I(t)] in the middle
+   7  *of p.33. Use “Equation Capital stock” as below. This equation is shown in the 2nd note on p.33.
+   8   
+   9  SET      t/2001*2020/;
+  10   
+  11   
+  12  Variable                    cc(t),L(t),K(t),Y(t),cc2;
+  13  positive variable           C(t),I(t);
+  14   
+  15  Parameter
+  16           gL,delta,A,L0,K0,r
+  17  ;
+  18           gL     =   0.02;
+  19           delta  =   0.10;
+  20           A      =   1   ;
+  21           L0     =   10  ;
+  22           K0     =   20  ;
+  23           r      =   0.03;
+  24   
+  25   
+  26  Equation
+  27  OBJ      Objective function
+  28  LAB(t)   Labour stock
+  29  CAP(t)   Capital stock
+  30  INC(t)   Income
+  31  PRO(t)   Production
+  32  CON(t)   Consumption per capita
+  33  ;
+  34   
+  35   
+  36  OBJ..    cc2     =e= sum(t,cc(t)*1/((1+r)**ord(t)));
+  37  LAB(t).. L(t)    =e= L0*((1+gL)**ord(t));
+  38  CAP(t).. K(t)    =e= (K0$(ord(t)=1))+K(t-1)*(1-delta)+I(t);
+  39  INC(t).. Y(t)    =e= C(t)+I(t);
+  40  PRO(t).. Y(t)    =e= A*K(t)**0.2*L(t)**0.8;
+  41  CON(t).. cc(t)   =e= C(t)/L(t);
+  42   
+  43  L.L(t) = L0;
+  44  K.L(t) = K0;
+  45   
+  46  L.LO(t) = 0;
+  47  K.LO(t) = 0;
+  48  cc.LO(t)= 0;
+  49  Y.LO(t) = 0;
+  50   
+  51  model Q3 /all/;
+  52   
+  53  solve Q3 maxmizing cc2 using NLP;
+  54   
+  55  display I.l,cc2.l;
+  56   
+  57   
+  58  *$libInclude x xldump Hana.xls sheet1!A1:S2
+  59   
+  60   
+
+
+COMPILATION TIME     =        0.006 SECONDS      3 MB  39.1.0 5f04cd76 DEX-DEG
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 2
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Equation Listing    SOLVE Q3 Using NLP From line 53
+
+
+---- OBJ  =E=  Objective function
+
+OBJ..  - 0.970873786407767*cc(2001) - 0.942595909133754*cc(2002) - 0.91514165935316*cc(2003) - 0.888487047915689*cc(2004) - 0.862608784384164*cc(2005) - 0.837484256683654*cc(2006) - 0.813091511343354*cc(2007) - 0.789409234313936*cc(2008) - 0.766416732343627*cc(2009) - 0.744093914896725*cc(2010) - 0.722421276598762*cc(2011) - 0.701379880192973*cc(2012) - 0.680951339993177*cc(2013) - 0.661117805818619*cc(2014) - 0.641861947396717*cc(2015) - 0.623166939220114*cc(2016) - 0.605016445844771*cc(2017) - 0.587394607616282*cc(2018) - 0.570286026811925*cc(2019) - 0.553675754186335*cc(2020) + cc2 =E= 0 ; (LHS = 0)
+     
+
+---- LAB  =E=  Labour stock
+
+LAB(2001)..  L(2001) =E= 10.2 ; (LHS = 10, INFES = 0.199999999999999 ****)
+     
+LAB(2002)..  L(2002) =E= 10.404 ; (LHS = 10, INFES = 0.404 ****)
+     
+LAB(2003)..  L(2003) =E= 10.61208 ; (LHS = 10, INFES = 0.612080000000002 ****)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- CAP  =E=  Capital stock
+
+CAP(2001)..  K(2001) - I(2001) =E= 20 ; (LHS = 20)
+     
+CAP(2002)..  - 0.9*K(2001) + K(2002) - I(2002) =E= 0 ; (LHS = 2, INFES = 2 ****)
+     
+CAP(2003)..  - 0.9*K(2002) + K(2003) - I(2003) =E= 0 ; (LHS = 2, INFES = 2 ****)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- INC  =E=  Income
+
+INC(2001)..  Y(2001) - C(2001) - I(2001) =E= 0 ; (LHS = 0)
+     
+INC(2002)..  Y(2002) - C(2002) - I(2002) =E= 0 ; (LHS = 0)
+     
+INC(2003)..  Y(2003) - C(2003) - I(2003) =E= 0 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- PRO  =E=  Production
+
+PRO(2001)..  - (0.918958683997628)*L(2001) - (0.114869835499704)*K(2001) + Y(2001) =E= 0 ; (LHS = -11.4869835499704, INFES = 11.4869835499704 ****)
+     
+PRO(2002)..  - (0.918958683997628)*L(2002) - (0.114869835499704)*K(2002) + Y(2002) =E= 0 ; (LHS = -11.4869835499704, INFES = 11.4869835499704 ****)
+     
+PRO(2003)..  - (0.918958683997628)*L(2003) - (0.114869835499704)*K(2003) + Y(2003) =E= 0 ; (LHS = -11.4869835499704, INFES = 11.4869835499704 ****)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+
+---- CON  =E=  Consumption per capita
+
+CON(2001)..  cc(2001) + (0)*L(2001) - (0.1)*C(2001) =E= 0 ; (LHS = 0)
+     
+CON(2002)..  cc(2002) + (0)*L(2002) - (0.1)*C(2002) =E= 0 ; (LHS = 0)
+     
+CON(2003)..  cc(2003) + (0)*L(2003) - (0.1)*C(2003) =E= 0 ; (LHS = 0)
+     
+REMAINING 17 ENTRIES SKIPPED
+
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 3
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Column Listing      SOLVE Q3 Using NLP From line 53
+
+
+---- cc  
+
+cc(2001)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.9709  OBJ
+        1       CON(2001)
+
+cc(2002)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.9426  OBJ
+        1       CON(2002)
+
+cc(2003)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -0.9151  OBJ
+        1       CON(2003)
+
+REMAINING 17 ENTRIES SKIPPED
+
+---- L  
+
+L(2001)
+                (.LO, .L, .UP, .M = 0, 10, +INF, 0)
+        1       LAB(2001)
+      (-0.919)  PRO(2001)
+       (0)      CON(2001)
+
+L(2002)
+                (.LO, .L, .UP, .M = 0, 10, +INF, 0)
+        1       LAB(2002)
+      (-0.919)  PRO(2002)
+       (0)      CON(2002)
+
+L(2003)
+                (.LO, .L, .UP, .M = 0, 10, +INF, 0)
+        1       LAB(2003)
+      (-0.919)  PRO(2003)
+       (0)      CON(2003)
+
+REMAINING 17 ENTRIES SKIPPED
+
+---- K  
+
+K(2001)
+                (.LO, .L, .UP, .M = 0, 20, +INF, 0)
+        1       CAP(2001)
+       -0.9     CAP(2002)
+      (-0.1149) PRO(2001)
+
+K(2002)
+                (.LO, .L, .UP, .M = 0, 20, +INF, 0)
+        1       CAP(2002)
+       -0.9     CAP(2003)
+      (-0.1149) PRO(2002)
+
+K(2003)
+                (.LO, .L, .UP, .M = 0, 20, +INF, 0)
+        1       CAP(2003)
+       -0.9     CAP(2004)
+      (-0.1149) PRO(2003)
+
+REMAINING 17 ENTRIES SKIPPED
+
+---- Y  
+
+Y(2001)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       INC(2001)
+        1       PRO(2001)
+
+Y(2002)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       INC(2002)
+        1       PRO(2002)
+
+Y(2003)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+        1       INC(2003)
+        1       PRO(2003)
+
+REMAINING 17 ENTRIES SKIPPED
+
+---- cc2  
+
+cc2
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       OBJ
+
+
+---- C  
+
+C(2001)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       INC(2001)
+      (-0.1)    CON(2001)
+
+C(2002)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       INC(2002)
+      (-0.1)    CON(2002)
+
+C(2003)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       INC(2003)
+      (-0.1)    CON(2003)
+
+REMAINING 17 ENTRIES SKIPPED
+
+---- I  
+
+I(2001)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       CAP(2001)
+       -1       INC(2001)
+
+I(2002)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       CAP(2002)
+       -1       INC(2002)
+
+I(2003)
+                (.LO, .L, .UP, .M = 0, 0, +INF, 0)
+       -1       CAP(2003)
+       -1       INC(2003)
+
+REMAINING 17 ENTRIES SKIPPED
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 4
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Range Statistics    SOLVE Q3 Using NLP From line 53
+
+
+RANGE STATISTICS (ABSOLUTE NON-ZERO FINITE VALUES)
+
+RHS       [min, max] : [ 1.020E+01, 2.000E+01] - Zero values observed as well
+Bound     [min, max] : [        NA,        NA] - Zero values observed as well
+Matrix    [min, max] : [ 1.000E-01, 1.000E+00] - Zero values observed as well
+
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 5
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Model Statistics    SOLVE Q3 Using NLP From line 53
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           6     SINGLE EQUATIONS          101
+BLOCKS OF VARIABLES           7     SINGLE VARIABLES          121
+NON ZERO ELEMENTS           280     NON LINEAR N-Z             80
+CODE LENGTH                 321     CONSTANT POOL              18
+
+
+GENERATION TIME      =        0.023 SECONDS      4 MB  39.1.0 5f04cd76 DEX-DEG
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 6
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+Solution Report     SOLVE Q3 Using NLP From line 53
+
+
+               S O L V E      S U M M A R Y
+
+     MODEL   Q3                  OBJECTIVE  cc2
+     TYPE    NLP                 DIRECTION  MAXIMIZE
+     SOLVER  CONOPT              FROM LINE  53
+
+**** SOLVER STATUS     1 Normal Completion
+**** MODEL STATUS      2 Locally Optimal
+**** OBJECTIVE VALUE               14.4486
+
+ RESOURCE USAGE, LIMIT          0.423 10000000000.000
+ ITERATION COUNT, LIMIT        26    2147483647
+ EVALUATION ERRORS              0             0
+--- *** This solver runs with a demo license. No commercial use.
+ 
+ 
+    C O N O P T 3   version 3.17M
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+    The model has 121 variables and 101 constraints
+    with 280 Jacobian elements, 80 of which are nonlinear.
+    The Hessian of the Lagrangian has 40 elements on the diagonal,
+    40 elements below the diagonal, and 60 nonlinear variables.
+ 
+ ** Warning **  The value of LFITER is out of range.
+                LFITER is decreased from 2147483647 to 1000000000.
+ 
+                   Pre-triangular equations:   20
+                   Post-triangular equations:  21
+                   Definitional equations:     39
+ 
+ 
+ ** Optimal solution. Reduced gradient less than tolerance.
+ 
+ 
+ CONOPT time Total                            0.012 seconds
+   of which: Function evaluations             0.004 = 33.3%
+             1st Derivative evaluations       0.000 =  0.0%
+             2nd Derivative evaluations       0.000 =  0.0%
+             Directional 2nd Derivative       0.000 =  0.0%
+ 
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- EQU OBJ                 .              .              .             1.0000      
+
+  OBJ  Objective function
+
+---- EQU LAB  Labour stock
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001        10.2000        10.2000        10.2000        -0.0218      
+2002        10.4040        10.4040        10.4040        -0.0202      
+2003        10.6121        10.6121        10.6121        -0.0188      
+2004        10.8243        10.8243        10.8243        -0.0039      
+2005        11.0408        11.0408        11.0408        -0.0030      
+2006        11.2616        11.2616        11.2616        -0.0029      
+2007        11.4869        11.4869        11.4869        -0.0028      
+2008        11.7166        11.7166        11.7166        -0.0026      
+2009        11.9509        11.9509        11.9509        -0.0025      
+2010        12.1899        12.1899        12.1899        -0.0024      
+2011        12.4337        12.4337        12.4337        -0.0023      
+2012        12.6824        12.6824        12.6824        -0.0022      
+2013        12.9361        12.9361        12.9361        -0.0064      
+2014        13.1948        13.1948        13.1948        -0.0105      
+2015        13.4587        13.4587        13.4587        -0.0097      
+2016        13.7279        13.7279        13.7279        -0.0090      
+2017        14.0024        14.0024        14.0024        -0.0084      
+2018        14.2825        14.2825        14.2825        -0.0078      
+2019        14.5681        14.5681        14.5681        -0.0072      
+2020        14.8595        14.8595        14.8595        -0.0067      
+
+---- EQU CAP  Capital stock
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001        20.0000        20.0000        20.0000         0.0914      
+2002          .              .              .             0.0892      
+2003          .              .              .             0.0862      
+2004          .              .              .             0.0821      
+2005          .              .              .             0.0781      
+2006          .              .              .             0.0744      
+2007          .              .              .             0.0708      
+2008          .              .              .             0.0674      
+2009          .              .              .             0.0641      
+2010          .              .              .             0.0610      
+2011          .              .              .             0.0581      
+2012          .              .              .             0.0553      
+2013          .              .              .             0.0526      
+2014          .              .              .             0.0497      
+2015          .              .              .             0.0460      
+2016          .              .              .             0.0414      
+2017          .              .              .             0.0358      
+2018          .              .              .             0.0290      
+2019          .              .              .             0.0209      
+2020          .              .              .             0.0113      
+
+---- EQU INC  Income
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .              .              .            -0.0952      
+2002          .              .              .            -0.0906      
+2003          .              .              .            -0.0862      
+2004          .              .              .            -0.0821      
+2005          .              .              .            -0.0781      
+2006          .              .              .            -0.0744      
+2007          .              .              .            -0.0708      
+2008          .              .              .            -0.0674      
+2009          .              .              .            -0.0641      
+2010          .              .              .            -0.0610      
+2011          .              .              .            -0.0581      
+2012          .              .              .            -0.0553      
+2013          .              .              .            -0.0526      
+2014          .              .              .            -0.0501      
+2015          .              .              .            -0.0477      
+2016          .              .              .            -0.0454      
+2017          .              .              .            -0.0432      
+2018          .              .              .            -0.0411      
+2019          .              .              .            -0.0391      
+2020          .              .              .            -0.0373      
+
+---- EQU PRO  Production
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .              .              .             0.0952      
+2002          .              .              .             0.0906      
+2003          .              .              .             0.0862      
+2004          .              .              .             0.0821      
+2005          .              .              .             0.0781      
+2006          .              .              .             0.0744      
+2007          .              .              .             0.0708      
+2008          .              .              .             0.0674      
+2009          .              .              .             0.0641      
+2010          .              .              .             0.0610      
+2011          .              .              .             0.0581      
+2012          .              .              .             0.0553      
+2013          .              .              .             0.0526      
+2014          .              .              .             0.0501      
+2015          .              .              .             0.0477      
+2016          .              .              .             0.0454      
+2017          .              .              .             0.0432      
+2018          .              .              .             0.0411      
+2019          .              .              .             0.0391      
+2020          .              .              .             0.0373      
+
+---- EQU CON  Consumption per capita
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .              .              .             0.9709      
+2002          .              .              .             0.9426      
+2003          .              .              .             0.9151      
+2004          .              .              .             0.8885      
+2005          .              .              .             0.8626      
+2006          .              .              .             0.8375      
+2007          .              .              .             0.8131      
+2008          .              .              .             0.7894      
+2009          .              .              .             0.7664      
+2010          .              .              .             0.7441      
+2011          .              .              .             0.7224      
+2012          .              .              .             0.7014      
+2013          .              .              .             0.6810      
+2014          .              .              .             0.6611      
+2015          .              .              .             0.6419      
+2016          .              .              .             0.6232      
+2017          .              .              .             0.6050      
+2018          .              .              .             0.5874      
+2019          .              .              .             0.5703      
+2020          .              .              .             0.5537      
+
+---- VAR cc  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .             1.1442        +INF             .          
+2002          .             1.1159        +INF             .          
+2003          .             1.0883        +INF             .          
+2004          .             0.9174        +INF             .          
+2005          .             0.9084        +INF             .          
+2006          .             0.9084        +INF             .          
+2007          .             0.9084        +INF             .          
+2008          .             0.9084        +INF             .          
+2009          .             0.9084        +INF             .          
+2010          .             0.9084        +INF             .          
+2011          .             0.9084        +INF             .          
+2012          .             0.9084        +INF             .          
+2013          .             0.9812        +INF             .          
+2014          .             1.0478        +INF             .          
+2015          .             1.0219        +INF             .          
+2016          .             0.9966        +INF             .          
+2017          .             0.9720        +INF             .          
+2018          .             0.9479        +INF             .          
+2019          .             0.9245        +INF             .          
+2020          .             0.9016        +INF             .          
+
+---- VAR L  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .            10.2000        +INF             .          
+2002          .            10.4040        +INF             .          
+2003          .            10.6121        +INF             .          
+2004          .            10.8243        +INF             .          
+2005          .            11.0408        +INF             .          
+2006          .            11.2616        +INF             .          
+2007          .            11.4869        +INF             .          
+2008          .            11.7166        +INF             .          
+2009          .            11.9509        +INF             .          
+2010          .            12.1899        +INF             .          
+2011          .            12.4337        +INF             .          
+2012          .            12.6824        +INF             .          
+2013          .            12.9361        +INF             .          
+2014          .            13.1948        +INF             .          
+2015          .            13.4587        +INF             .          
+2016          .            13.7279        +INF             .          
+2017          .            14.0024        +INF             .          
+2018          .            14.2825        +INF             .          
+2019          .            14.5681        +INF             .          
+2020          .            14.8595        +INF             .          
+
+---- VAR K  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .            20.0000        +INF             .          
+2002          .            18.0000        +INF             .          
+2003          .            16.2000        +INF             .          
+2004          .            16.4136        +INF             .          
+2005          .            16.7419        +INF             .          
+2006          .            17.0767        +INF             .          
+2007          .            17.4182        +INF             .          
+2008          .            17.7666        +INF             .          
+2009          .            18.1219        +INF             .          
+2010          .            18.4844        +INF             .          
+2011          .            18.8541        +INF             .          
+2012          .            19.2311        +INF             .          
+2013          .            18.5126        +INF             .          
+2014          .            16.6613        +INF             .          
+2015          .            14.9952        +INF             .          
+2016          .            13.4957        +INF             .          
+2017          .            12.1461        +INF             .          
+2018          .            10.9315        +INF             .          
+2019          .             9.8383        +INF             .          
+2020          .             8.8545        +INF             .          
+
+---- VAR Y  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .            11.6704        +INF             .          
+2002          .            11.6095        +INF             .          
+2003          .            11.5490        +INF             .          
+2004          .            11.7642        +INF             .          
+2005          .            11.9995        +INF             .          
+2006          .            12.2394        +INF             .          
+2007          .            12.4842        +INF             .          
+2008          .            12.7339        +INF             .          
+2009          .            12.9886        +INF             .          
+2010          .            13.2484        +INF             .          
+2011          .            13.5133        +INF             .          
+2012          .            13.7836        +INF             .          
+2013          .            13.8974        +INF             .          
+2014          .            13.8250        +INF             .          
+2015          .            13.7528        +INF             .          
+2016          .            13.6811        +INF             .          
+2017          .            13.6097        +INF             .          
+2018          .            13.5387        +INF             .          
+2019          .            13.4681        +INF             .          
+2020          .            13.3979        +INF             .          
+
+                           LOWER          LEVEL          UPPER         MARGINAL
+
+---- VAR cc2               -INF           14.4486        +INF             .          
+
+---- VAR C  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .            11.6704        +INF             .          
+2002          .            11.6095        +INF             .          
+2003          .            11.5490        +INF             .          
+2004          .             9.9306        +INF      -6.950405E-9      
+2005          .            10.0298        +INF      -6.616028E-9      
+2006          .            10.2304        +INF      -6.295507E-9      
+2007          .            10.4350        +INF      -5.989734E-9      
+2008          .            10.6437        +INF             .          
+2009          .            10.8566        +INF      -6.981839E-9      
+2010          .            11.0737        +INF      -6.701150E-9      
+2011          .            11.2952        +INF      -6.418503E-9      
+2012          .            11.5211        +INF      -6.164216E-9      
+2013          .            12.6929        +INF             .          
+2014          .            13.8250        +INF             .          
+2015          .            13.7528        +INF             .          
+2016          .            13.6811        +INF             .          
+2017          .            13.6097        +INF             .          
+2018          .            13.5387        +INF             .          
+2019          .            13.4681        +INF             .          
+2020          .            13.3979        +INF             .          
+
+---- VAR I  
+
+            LOWER          LEVEL          UPPER         MARGINAL
+
+2001          .              .            +INF           -0.0038      
+2002          .              .            +INF           -0.0014      
+2003          .              .            +INF           -0.0001      
+2004          .             1.8336        +INF             .          
+2005          .             1.9696        +INF             .          
+2006          .             2.0090        +INF             .          
+2007          .             2.0492        +INF             .          
+2008          .             2.0902        +INF      6.9847832E-9      
+2009          .             2.1320        +INF             .          
+2010          .             2.1746        +INF             .          
+2011          .             2.2181        +INF             .          
+2012          .             2.2625        +INF             .          
+2013          .             1.2045        +INF      2.1180839E-9      
+2014          .              .            +INF           -0.0004      
+2015          .              .            +INF           -0.0017      
+2016          .              .            +INF           -0.0040      
+2017          .              .            +INF           -0.0075      
+2018          .              .            +INF           -0.0122      
+2019          .              .            +INF           -0.0183      
+2020          .              .            +INF           -0.0260      
+
+
+**** REPORT SUMMARY :        0     NONOPT
+                             0 INFEASIBLE
+                             0  UNBOUNDED
+                             0     ERRORS
+GAMS 39.1.0  5f04cd76 May 3, 2022           DEX-DEG x86 64bit/Mac OS X - 05/18/22 15:53:30 Page 7
+G e n e r a l   A l g e b r a i c   M o d e l i n g   S y s t e m
+E x e c u t i o n
+
+
+----     55 VARIABLE I.L  
+
+2004 1.834,    2005 1.970,    2006 2.009,    2007 2.049,    2008 2.090,    2009 2.132,    2010 2.175,    2011 2.218,    2012 2.262,    2013 1.205
+
+
+----     55 VARIABLE cc2.L                 =       14.449  
+
+
+EXECUTION TIME       =        0.602 SECONDS      4 MB  39.1.0 5f04cd76 DEX-DEG
+
+
+USER: GAMS Demo license for Dianti Kamasela          G220509|0002CO-GEN
+      Kyoto University, Indonesia                              DL067067
+
+
+**** FILE SUMMARY
+
+Input      /Users/apple/Downloads/Hana.A2GAMS/Q3.gms
+Output     /Users/apple/Downloads/Hana.A2GAMS/Q3.lst

@@ -1,0 +1,35 @@
+B 3 C o m p i l a t i o n
+B 71 Equation Listing    SOLVE Q3 Using NLP From line 53
+D 74 OBJ
+D 79 LAB
+D 90 CAP
+D 101 INC
+D 112 PRO
+D 123 CON
+B 135 Column Listing      SOLVE Q3 Using NLP From line 53
+E 138 cc
+E 157 L
+E 179 K
+E 201 Y
+E 220 cc2
+E 227 C
+E 246 I
+B 266 Range Statistics    SOLVE Q3 Using NLP From line 53
+B 277 Model Statistics    SOLVE Q3 Using NLP From line 53
+B 291 Solution Report     SOLVE Q3 Using NLP From line 53
+F 341 OBJ
+F 345 LAB
+F 370 CAP
+F 395 INC
+F 420 PRO
+F 445 CON
+G 470 cc
+G 495 L
+G 520 K
+G 545 Y
+G 572 cc2
+G 574 C
+G 599 I
+B 631 E x e c u t i o n
+I 631 I
+I 638 cc2
